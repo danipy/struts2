@@ -14,9 +14,10 @@
 <body>
   <div class="saludo">
     <h1>Struts2 action</h1>
-    <s:form action="posts">
-      <s:textfield name="blogPost.user" label="Nombre"></s:textfield>
-      <s:textarea name="blogPost.post" label="Post"></s:textarea>
+    <s:form action="addPost">
+      <s:textfield name="id" label="Id"></s:textfield>
+      <s:textfield name="userId" label="Usuario"></s:textfield>
+      <s:textfield name="post" label="Post"></s:textfield>
       <s:submit value="Aceptar"></s:submit>
     </s:form>
   </div>

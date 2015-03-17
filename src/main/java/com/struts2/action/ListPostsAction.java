@@ -5,14 +5,23 @@ import java.util.Date;
 import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
+import com.struts2.dao.BlogPostDao;
 import com.struts2.model.BlogPost;
 import com.struts2.model.Comment;
 
-public class ListPostsAction extends ActionSupport {
+public class ListPostsAction extends ActionSupport implements
+		ModelDriven<BlogPost> {
 
 	private static final long serialVersionUID = 1L;
 
-	private List<BlogPost> posts;
+	private BlogPost post = new BlogPost();
+	private List<BlogPost> posts = new ArrayList<BlogPost>();
+	private BlogPostDao blogPostDao = new BlogPostDao();
+
+	public BlogPost getModel() {
+		return post;
+	}
 
 	public ListPostsAction() {
 	}
@@ -22,8 +31,11 @@ public class ListPostsAction extends ActionSupport {
 	}
 
 	public String execute() {
-		posts = postListDemo();
-		return SUCCESS;
+		posts = blogPostDao.getPosts();
+		if (posts.size() != 0)
+			return SUCCESS;
+		else
+			return ERROR;
 	}
 
 	public List<BlogPost> getPosts() {
@@ -65,12 +77,9 @@ public class ListPostsAction extends ActionSupport {
 		commentsBp3.add(c5);
 		commentsBp3.add(c6);
 
-		BlogPost bp1 = new BlogPost("Paco", "Bacon ipsum dolor sit amet nulla ham qui sint exercitation "
-						+ "eiusmod commodo, chuck duis velit. Aute in reprehenderit");
-		BlogPost bp2 = new BlogPost("Pedro", "Bacon ipsum dolor sit amet nulla ham qui sint exercitation "
-						+ "eiusmod commodo, chuck duis velit. Aute in reprehenderit");
-		BlogPost bp3 = new BlogPost("De la mar", "Bacon ipsum dolor sit amet nulla ham qui sint exercitation "
-						+ "eiusmod commodo, chuck duis velit. Aute in reprehenderit");
+		BlogPost bp1 = new BlogPost();
+		BlogPost bp2 = new BlogPost();
+		BlogPost bp3 = new BlogPost();
 		
 		List<BlogPost> list = new ArrayList<BlogPost>();
 		

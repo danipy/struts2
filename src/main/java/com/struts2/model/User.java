@@ -1,10 +1,28 @@
 package com.struts2.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "USER")
 public class User {
+
+	@Id
+	@Column(name = "ID")
 	private int id;
+
+	@Column(name = "USERNAME")
 	private String username;
+
+	@Column(name = "NAME")
 	private String name;
+
+	@Column(name = "LAST_NAME")
 	private String lastname;
+
+	@Column(name = "EMAIL")
 	private String email;
 
 	public int getId() {

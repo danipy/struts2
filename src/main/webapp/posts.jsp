@@ -65,8 +65,8 @@
           <div class="large-2 columns small-3"><img src="https://randomuser.me/api/portraits/thumb/lego/6.jpg" class="face"/></div>
           <div class="large-10 columns">
             <p>
-              <strong><s:property value="blogPost.user"/> dijo:</strong>
-              <s:property value="blogPost.post"/>
+              <strong><s:property value="user"/> dijo:</strong>
+              <s:property value="post"/>
             </p>
             <ul class="inline-list">
               <li><a href="">Reply</a></li>
@@ -75,14 +75,12 @@
             
             <div>
               <h6>2 Comments</h6>
-              <div class="row">
+              <s:iterator value="comments">
+              	<div class="row">
                 <div class="large-2 columns small-3"><img src="http://placehold.it/50x50&text=[img]"/></div>
-                <div class="large-10 columns"><p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit</p></div>
+                <div class="large-10 columns"><p><s:property value="comment" /></p></div>
               </div>
-              <div class="row">
-                <div class="large-2 columns small-3"><img src="http://placehold.it/50x50&text=[img]"/></div>
-                <div class="large-10 columns"><p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit</p></div>
-              </div>
+              </s:iterator>
             </div>
             
           </div>

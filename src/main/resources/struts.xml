@@ -7,22 +7,24 @@
     <constant name="struts.devMode" value="true"></constant>
     <constant name="struts.action.extension" value=","></constant>
     
-    <package name="default" extends="struts-default">
+    <package name="default" extends="hibernate-default">
       
       <action name="">
-        <result>/index.jsp</result>
+        <result type="redirect">posts</result>
       </action>
       
       <action name="index">
-        <result>/posts.jsp</result>
+        <result type="redirect">posts</result>
       </action>
       
       <action name="posts" class="com.struts2.action.ListPostsAction">
         <result name="success">/posts.jsp</result>
+        <result name="error" type="redirect">/newPost.jsp</result>
       </action>
       
       <action name="addPost" class="com.struts2.action.BlogPostAction">
         <result name="success">/newPost.jsp</result>
+        <result name="input" type="redirect">posts</result>
       </action>
     
     </package>
